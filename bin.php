@@ -2,5 +2,5 @@
 	$hn = 'localhost';
 	$un = 'php';
 	$pw = 'fancysonarnuclearcrisps';
-	$db = 'project';
+	$db = 'prototype';
 ?>
