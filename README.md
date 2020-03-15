@@ -1,2 +1,1 @@
 # foodstar-frontend
-test
