@@ -1,0 +1,352 @@
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+section {
+    display: block;
+}
+
+ol,
+ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+/*--start editing from here--*/
+
+a {
+    text-decoration: none;
+}
+
+.txt-rt {
+    text-align: right;
+}
+
+/* text align right */
+
+.txt-lt {
+    text-align: left;
+}
+
+/* text align left */
+
+.txt-center {
+    text-align: center;
+}
+
+/* text align center */
+
+.float-rt {
+    float: right;
+}
+
+/* float right */
+
+.float-lt {
+    float: left;
+}
+
+/* float left */
+
+.clearfix {
+    clear: both;
+}
+
+/* clear float */
+
+.pos-relative {
+    position: relative;
+}
+
+/* Position Relative */
+
+.pos-absolute {
+    position: absolute;
+}
+
+/* Position Absolute */
+
+.vertical-base {
+    vertical-align: baseline;
+}
+
+/* vertical align baseline */
+
+.vertical-top {
+    vertical-align: top;
+}
+
+/* vertical align top */
+
+nav.vertical ul li {
+    display: block;
+}
+
+/* vertical menu */
+
+nav.horizontal ul li {
+    display: inline-block;
+}
+
+/* horizontal menu */
+
+img {
+    max-width: 100%;
+}
+
+/*--end reset--*/
+body a:hover {
+    text-decoration: none;
+}
+
+.clearfix {
+    clear: both;
+}
+
+/* content */
+
+/*
+  Responsive form elements
+  Flexbox layout
+*/
+
+/*/////////////// GLOBAL STYLES ////////////////////*/
+
+body {
+	font-family: 'Mukta', sans-serif;
+}
+body a{
+	cursor: pointer !important;
+}
+button,.btn{
+	cursor: pointer !important;
+}
+.main {
+    background: url(food_background.png);
+    background-size: cover;
+	background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+	position: relative;
+    min-height: 100vh;
+}
+.layer {
+    padding: 2em 0;
+}
+.text-center {
+    text-align: center;
+}
+
+/*/////////////// FONT STYLES ////////////////////*/
+.title{
+  width: 533px;
+  height: 224px;
+  text-align: center;
+  color: #ffffff;
+  font-Family: 'Josefin Sans';
+  font-Size: 92px;
+  font-weight: 700px;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: white;
+}
+
+.content-main {
+    max-width: 500px;
+    margin: 6em auto;
+}
+ul.links-unordered-list li.active a {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px 20px;
+    color: #fff;
+}
+.content-bottom {
+    padding: 0em 4em;
+    margin: 0 1em;
+	position: relative; 
+    z-index: 1;
+}
+.content-main ul li {
+    display: inline-block;
+}
+
+li.switch-agileits {
+    float: left;
+}
+
+ul.list-login li:nth-child(2) {
+    float: right;
+}
+ul.list-login-bottom li:nth-child(2) {
+    float: right;
+}
+
+.field-group label {
+    font-size: 15px;
+}
+
+/*/////////////// FORM STYLES ////////////////////*/
+
+form .field-group {
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    display: flex;
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    margin-bottom: 20px;
+    padding: 2px 10px 2px 0;
+	border-radius: 35px;
+	-webkit-border-radius: 35px;
+	-moz-border-radius: 35px;
+	-ms-border-radius: 35px;
+	-o-border-radius: 35px;
+}
+
+form .field-group .icon-field {
+    flex: 1;
+    -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 1;         /* OLD - Firefox 19- */
+    width: 20%;               /* For old syntax, otherwise collapses. */
+    -webkit-flex: 1;          /* Chrome */
+    -ms-flex: 1;              /* IE 10 */
+    text-align: right;
+}
+form .field-group span.fa {
+    color: #fff;
+    background: transparent;
+    line-height: 49px;
+    text-align: right;
+}
+
+ul.list-login {
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+form .field-group .input-field {
+    flex: 4 50%;
+    -webkit-box-flex:4 50%;     /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 4 50%;        /* OLD - Firefox 19- */
+    -webkit-flex: 4 50%;          /* Chrome */
+    -ms-flex: 4 50%;             /* IE 10 */
+}
+
+.input-field button.btn {
+    border: none;
+    color: #fff;
+    padding: 11px 15px;
+    text-transform: uppercase;
+	font-family: 'Mukta', sans-serif;
+    font-size: 16px;
+	width:100%;
+	margin-top:10px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+	border-radius: 35px !important;
+	-webkit-border-radius: 35px !important;
+	-moz-border-radius: 35px !important;
+	-ms-border-radius: 35px !important;
+  -o-border-radius: 35px !important;
+  border-radius: 0px; 
+  font-size: 16px; 
+  background-color: rgb(86, 99, 255);
+}
+
+.bottom-grid,.bottom-grid1{
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    justify-content: space-between;
+    margin: 0em 10em;
+}
+ul.links-unordered-list li {
+    display: inline-block;
+}
+ul.links-unordered-list li a {
+    font-size: 16px;
+    color: #ccc;
+    font-weight: normal;
+    letter-spacing: 1px;
+    padding: 0 15px;
+    text-transform: capitalize;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: white;
+}
+.input-field input {
+    padding: 10px 0 10px 15px;
+    font-size: 17px;
+    font-weight: 300px;
+	color:#fff;
+    letter-spacing: 1px;
+    border: none;
+    background: transparent;
+    box-sizing: border-box;
+	font-family: 'Mukta', sans-serif;
+    width: 100%;
+    outline: none;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #fff;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #fff;
+}
+::-ms-input-placeholder { /* IE 10+ */
+  color: #fff;
+}
+::-moz-placeholder { /* Firefox 18- */
+  color: #fff;
+}
+
+ul.list-login-bottom{
+  text-align: center;
+  margin-top: 50px;
+}
+ul.list-login-bottom li:nth-child(1) a,ul.list-login-bottom li:nth-child(2) a {
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: #fff !important;
+    margin-top: 50px;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: white;
+}
+
+li:nth-child(2) a,li:nth-child(1) a {
+    color: #fff;
+}
+
+
+
+
