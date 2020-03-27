@@ -1,5 +1,9 @@
+<?php
+echo <<<_END
 <html>
+<head><title>HW 3 Webpage</title></head>
 <body>
+	<form action="homepage.php" method="post" enctype="multipart/form-data">
 <h1 style="text-align: center;">Food Star</h1>
 <div>
 <div style="float: left;"><form id="thisone" action="post_nrs_users.asp" method="post"><input height="60" src="https://image.flaticon.com/icons/png/512/56/56763.png" type="image" width="60" /></form></div>
@@ -25,3 +29,14 @@
 <p align="Left">&nbsp;</p>
  </body>
 </html>
+_END;
+
+$json_url = "http://10.147.20.66/api";
+$json = file_get_contents($json_url);
+$data = json_decode($json, TRUE);
+echo "<pre>";
+print_r($data);
+echo "</pre>";
+
+
+?>
