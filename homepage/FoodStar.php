@@ -35,6 +35,7 @@ xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var myObj = JSON.parse(this.responseText);
     document.getElementById("demo").innerHTML = myObj.name;
+    console.log(myObj);
   }
 };
 xmlhttp.open("GET", "http://10.147.20.66/api", true);
