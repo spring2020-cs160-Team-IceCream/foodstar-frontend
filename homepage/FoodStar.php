@@ -27,7 +27,19 @@ echo <<<_END
 <p align="Center"><img src="https://previews.123rf.com/images/rehabicons/rehabicons1804/rehabicons180400048/100306579-map-pointer-icon-location-button.jpg" alt="" width="15" height="15" />0.7 miles away</p>
 <p align="Center"><button>More Details</button></p>
 <p align="Left">&nbsp;</p>
+<div id="demo"></div>
  </body>
+ <script>
+ var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myObj = JSON.parse(this.responseText);
+    document.getElementById("demo").innerHTML = myObj.name;
+  }
+};
+xmlhttp.open("GET", "http://10.147.20.66/api", true);
+xmlhttp.send();
+ </script>
 </html>
 _END;
 
