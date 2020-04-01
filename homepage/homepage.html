@@ -1,5 +1,5 @@
 <html>
-<head><title>HW 3 Webpage</title></head>
+<head><title>Foodstar</title></head>
 <body>
 <h1 style="text-align: center;">Food Star</h1>
 
@@ -38,10 +38,29 @@ function myFunction() {
 <p align="Center"><button>More Details</button></p>
 <p align="Left">&nbsp;</p>
 <div id="demo"></div>
+
+<button onclick="showContent()">Show content</button>
+
+<template>
+<p align="Left"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.foodandwine.com%2Fsites%2Fdefault%2Ffiles%2F1541088184%2Fyemenite-short-ribs-xl-MAG1218.jpg" alt="" width="244" height="244" /></p>
+<p align="Center">Yemenite Short Ribs</p>
+<p align="Center">$24.99</p>
+<p align="Center"><img src="https://cdn3.iconfinder.com/data/icons/basicolor-votting-awards/24/198_star_favorite_vote_achievement-512.png" alt="" width="15" height="15" />&nbsp;4.5</p>
+<p align="Center"><img src="https://previews.123rf.com/images/rehabicons/rehabicons1804/rehabicons180400048/100306579-map-pointer-icon-location-button.jpg" alt="" width="15" height="15" />0.7 miles away</p>
+<p align="Center"><button>More Details</button></p>
+</template>
+
+<script>
+function showContent() {
+  var temp = document.getElementsByTagName("template")[0];
+  var clon = temp.content.cloneNode(true);
+  document.body.appendChild(clon);
+}
+</script>
+
+
  </body>
  <script>
-
-
 <!-- access JSON by url -->
  var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
