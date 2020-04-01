@@ -1,21 +1,73 @@
 <html>
-<head><title>Foodstar</title></head>
+<head>
+<title>Foodstar</title>
+
+<!-- Search bar -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 11px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
 <body>
 <h1 style="text-align: center;">Food Star</h1>
 
+<!-- Search bar -->
+<form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+  <input type="text" placeholder="Search.." name="search2">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+<!-- Menu and post buttons -->
 <button type = "submit" style="float: left;">
    <img height="60" width="60" src="https://image.flaticon.com/icons/png/512/56/56763.png" onclick=""/>
 </button>
-
 <button type = "submit" style="float: right;">
-   <img height="60" width="60" src="https://cdn3.iconfinder.com/data/icons/glyph/227/Button-Add-1-512.png" onclick="myFunction()"/>
+   <img height="60" width="60" src="https://cdn3.iconfinder.com/data/icons/glyph/227/Button-Add-1-512.png" onclick="search()"/>
 </button>
-
 <script>
-function myFunction() {
-  location.replace("postPage.html")
+function search() {
+  location.replace("postpage.html")
 }
 </script>
+
+
 
 <!-- Replace the following with real data -->
 
