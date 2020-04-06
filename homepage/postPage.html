@@ -13,13 +13,28 @@
 </tr>
 </tbody>
 </table>
-<form action="postPage.php">
+<form>
 <p style="text-align: center;"><label for = "dishName">Dish name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> <input type="text" id="dishName" name="dishName"/></p>
 <p style="text-align: center;"><label for = "restaurant">Restaurant name:</label> <input type="text" id="restaurant" name="restaurant" /></p>
 <p style="text-align: center;"><label for = "price">Price:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> <input type="text" id="price" name="price"/></p>
 <p style="text-align: center;"><label for = "description">Description:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> <input type="text" id="description" name="description"/></p>
-<p style="text-align: center;"><input type="submit" value="Post" /></p>
+<p style="text-align: center;"><button onclick="loadDoc()">Post</button> </p>
 </form>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("POST", "http://10.147.20.66/api", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("fname=Henry&lname=Ford");
+}
+</script>
+
 
 </body>
 </html>
