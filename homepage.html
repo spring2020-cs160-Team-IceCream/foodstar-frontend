@@ -1,0 +1,175 @@
+<html>
+<head>
+<title>Foodstar</title>
+
+<!-- Search bar -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 11px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+<body>
+<h1 style="text-align: center;">Food Star</h1>
+
+<!-- Search bar -->
+<form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+  <input type="text" placeholder="Search.." name="search2">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+<!-- Menu and post buttons -->
+<button type = "submit" style="float: left;">
+   <img height="60" width="60" src="https://image.flaticon.com/icons/png/512/56/56763.png" onclick=""/>
+</button>
+<button type = "submit" style="float: right;">
+   <img height="60" width="60" src="https://cdn3.iconfinder.com/data/icons/glyph/227/Button-Add-1-512.png" onclick="search()"/>
+</button>
+<script>
+function search() {
+  location.replace("postpage.html")
+}
+</script>
+
+
+
+<!-- Replace the following with real data -->
+
+<p align="Left">&nbsp;</p>
+<p align="Left">&nbsp;</p>
+<p align="Left">&nbsp;</p>
+<p align="Left"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.foodandwine.com%2Fsites%2Fdefault%2Ffiles%2F1541088184%2Fyemenite-short-ribs-xl-MAG1218.jpg" alt="" width="244" height="244" /></p>
+<p align="Center">Yemenite Short Ribs</p>
+<p align="Center">$24.99</p>
+<p align="Center"><img src="https://cdn3.iconfinder.com/data/icons/basicolor-votting-awards/24/198_star_favorite_vote_achievement-512.png" alt="" width="15" height="15" />&nbsp;4.5</p>
+<p align="Center"><img src="https://previews.123rf.com/images/rehabicons/rehabicons1804/rehabicons180400048/100306579-map-pointer-icon-location-button.jpg" alt="" width="15" height="15" />0.7 miles away</p>
+<p align="Center"><button>More Details</button></p>
+<p align="Left">&nbsp;</p>
+<p align="Left">&nbsp;</p>
+<p align="Left"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://40.media.tumblr.com/8ccc27daca338b6e827244e80bc5050c/tumblr_ngtx790sD91rrhpaao1_500.jpg" alt="" width="244" height="244" /></p>
+<p align="Center">FreeStyle Sushi</p>
+<p align="Center">$42.99</p>
+<p align="Center"><img src="https://cdn3.iconfinder.com/data/icons/basicolor-votting-awards/24/198_star_favorite_vote_achievement-512.png" alt="" width="15" height="15" />&nbsp;4.7</p>
+<p align="Center"><img src="https://previews.123rf.com/images/rehabicons/rehabicons1804/rehabicons180400048/100306579-map-pointer-icon-location-button.jpg" alt="" width="15" height="15" />0.7 miles away</p>
+<p align="Center"><button>More Details</button></p>
+<p align="Left">&nbsp;</p>
+<div id="demo"></div>
+
+
+<template>
+<p align="Left"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.foodandwine.com%2Fsites%2Fdefault%2Ffiles%2F1541088184%2Fyemenite-short-ribs-xl-MAG1218.jpg" alt="" width="244" height="244" /></p>
+<p align="Center">Yemenite Short Ribs</p>
+<p align="Center">$24.99</p>
+<p align="Center"><img src="https://cdn3.iconfinder.com/data/icons/basicolor-votting-awards/24/198_star_favorite_vote_achievement-512.png" alt="" width="15" height="15" />&nbsp;4.5</p>
+<p align="Center"><img src="https://previews.123rf.com/images/rehabicons/rehabicons1804/rehabicons180400048/100306579-map-pointer-icon-location-button.jpg" alt="" width="15" height="15" />0.7 miles away</p>
+<p align="Center"><button>More Details</button></p>
+</template>
+
+
+<script>
+
+function displayPosts(JSON arr) {
+  arr.forEach(displayIndividual);
+}
+
+function displayIndvidual(){
+  var post = demo.innerHTML.split(" "); //this is an array
+
+  var pic = post[0]; //"https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.foodandwine.com%2Fsites%2Fdefault%2Ffiles%2F1541088184%2Fyemenite-short-ribs-xl-MAG1218.jpg"
+  var foodName = post[1];//"Yemenite Short Ribs"
+  var price = post[2];//"$24.99" !!!!!! --> this has to be carefully detailed in JSON; implementation design
+  var rating = post[3];//"4.5"
+  var distance = post[4];//"0.7 miles away"
+
+  //picture
+  var picNode = document.createElement("image");
+  picNode.getAttributeNode("style").value = "display: block; margin-left: auto; margin-right: auto;";
+  picNode.getAttributeNode("src").value = pic;
+
+  //name,price
+  var para1 = document.createElement("P");
+  para1.getAttributeNode("align").value = "Center";
+  para.innerHTML = foodName + "<br>" + price + "<br>";
+
+  //rating
+  var ratingNode = document.createElement("image");
+  ratingNode.getAttributeNode("align").value = "Center";
+  ratingNode.innerHTML = "<img src=\"https://cdn3.iconfinder.com/data/icons/basicolor-votting-awards/24/198_star_favorite_vote_achievement-512.png\" alt=\"\" width=\"15\" height=\"15\" />&nbsp;" + rating;
+
+  //distance
+  var distanceNode = document.createElement("image");
+  distanceNode.getAttributeNode("align").value = "Center";
+  distanceNode.innerHTML = "<img src=\"https://previews.123rf.com/images/rehabicons/rehabicons1804/rehabicons180400048/100306579-map-pointer-icon-location-button.jpg\" alt=\"\" width=\"15\" height=\"15\" />0.7 miles away" + distance;
+
+}
+
+</script>
+
+
+ </body>
+<script>
+
+function displayTest(post)
+{
+  var user = post.user_id;
+  var type = post.type;
+  var pic = post.profile_pic
+  var description = post.description;
+  var node = document.createElement("P");
+  node.innerHTML = "Node :" + user + " " + type + " " + pic + " " + description;
+  document.body.appendChild(node);
+}
+<!-- access JSON by url -->
+ var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myObj = JSON.parse(this.responseText);
+
+  var demo = document.createElement("text"); //the html block
+  demo.innerHTML = "Here :" + myObj[0].user_id + " " + myObj[0].type + " " +  myObj[0].profile_pic + " " + myObj[0].description;
+  document.body.appendChild(demo);
+
+  displayTest(myObj[0]);
+  }
+};
+xmlhttp.open("GET", "http://10.147.20.66/api", true);
+xmlhttp.send();
+</script>
+
+</html>
