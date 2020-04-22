@@ -34,7 +34,7 @@
 				<h1>FoodStar</h1>
 			</div>
 			<div class="content-bottom">
-				<form action="homepage.html" method="post">
+				<form onSubmit="return login();">
 					<div class="field-group editContent">
 						<div class="icon-field">
 							<span class="fa fa-envelope" aria-hidden="true" id="ui-id-2"></span>
@@ -64,6 +64,7 @@
 					<script>
 					function login() {
   						location.replace("homepage.html")
+						return false;
 					}
 					</script>
 					</div>
