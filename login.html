@@ -40,7 +40,7 @@
 							<span class="fa fa-envelope" aria-hidden="true" id="ui-id-2"></span>
 						</div>
 						<div class="input-field">
-							<input name="email" id="email" type="text" placeholder="Email" required=""/>
+							<input name="username" id="username" type="text" placeholder="Email" required=""/>
 						</div>
 					</div>
 					<div class="field-group editContent">
@@ -48,7 +48,7 @@
 							<span class="fa fa-lock" aria-hidden="true"></span>
 						</div>
 						<div class="input-field">
-							<input name="password" id="myInput" type="Password" placeholder="Password"/>
+							<input name="password" id="password" type="Password" placeholder="Password"/>
 						</div>
 					</div>
 					<ul class="list-login">
@@ -63,7 +63,25 @@
 					<button type="submit" onclick="login()" class="btn">Login</button>
 					<script>
 					function login() {
-  						location.replace("homepage.html")
+ 						var data = {};
+      						data.username = document.getElementById("username").value;
+      						data.password = document.getElementById("password").value;
+	
+      						var formData = new FormData();
+      						formData.append("data", JSON.stringify(data));
+	
+      						var request = new XMLHttpRequest();
+						request.onload = function() {
+  							console.log(request.response);
+  							console.log(request.response.byteLength);
+						};
+						console.log("1212");
+      						request.open("POST", "http://10.147.20.66/api/login");
+      						request.send(formData);
+						
+
+						
+  						
 						return false;
 					}
 					</script>
@@ -80,6 +98,10 @@
     </div>
 	</section></div>
 	
-
+<script>
+    function post () {
+     
+    }
+  </script>
 
 </body></html>
