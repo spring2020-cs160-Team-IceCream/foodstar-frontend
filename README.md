@@ -1,2 +1,2 @@
-# foodstar-frontend
-login.html -> click login -> homepage -> click post icon on the top right corner->post page
+# Foodstar-Frontend
+All pages are in the root folder: login.html, createAccount.html, homepage.html, and postPage.html. 
