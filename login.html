@@ -72,6 +72,9 @@
 					}
 
 					function login() {
+
+						location.replace("homepage.html")
+
  						var data = {};
       						data.username = document.getElementById("username").value;
       						data.password = document.getElementById("password").value;
@@ -88,7 +91,7 @@
 								location.replace("homepage.html")
 						};
 
-						location.replace("homepage.html")
+						
 
       						request.open("POST", "http://10.147.20.66/api/login");
       						request.send(formData);
