@@ -21,7 +21,6 @@
 	<!-- //google fonts -->
 	
 </head>
-
 <body>
 	<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
 	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
@@ -60,48 +59,46 @@
 						<li class="clearfix"></li>
 					</ul>
 					<div class="input-field">
-					<button type="submit" onclick="login()" class="btn">Login</button>
-					<script>
-					function login() {
- 						var data = {};
-      						data.username = document.getElementById("username").value;
-      						data.password = document.getElementById("password").value;
-	
-      						var formData = new FormData();
-      						formData.append("data", JSON.stringify(data));
-	
-      						var request = new XMLHttpRequest();
-						request.onload = function() {
-  							console.log(request.response);
-  							console.log(request.response.byteLength);
-						};
-						console.log("1212");
-      						request.open("POST", "http://10.147.20.66/api/login");
-      						request.send(formData);
-						
-
-						
-  						
-						return false;
-					}
-					</script>
+					<button type="submit" class="btn">Login</button>
 					</div>
 
 					<ul class="list-login-bottom">
 						<li class="">
-							<a href="#" class="editContent medium-editor-element" contenteditable="true" spellcheck="true" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="13" medium-editor-index="97f948df-618b-1849-eff2-a7c015fad069" data-placeholder="Type your text">Create Account</a>
+							<a href="#" class="editContent medium-editor-element" contenteditable="true" spellcheck="true" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="13" medium-editor-index="97f948df-618b-1849-eff2-a7c015fad069" data-placeholder="Type your text" onclick="createAccount()" style="width:auto;" >Create Account</a>
 						</li>
+					<script>
+					function createAccount() {
+ 						location.replace("createAccount.html")
+					}
+
+					function login() {
+ 						var data = {};
+      						data.username = document.getElementById("username").value;
+      						data.password = document.getElementById("password").value;
+						
+      						var formData = new FormData();
+      						formData.append("data", JSON.stringify(data));
+						console.log("data : " + JSON.stringify(data));
+      						var request = new XMLHttpRequest();
+						request.onload = function() {
+  							console.log(request.responseText);
+							var myObj = JSON.parse(request.responseText);
+							console.log(myObj.status);
+  							if(myObj.status == true)
+								location.replace("homepage.html")
+						};
+						
+      						request.open("POST", "http://10.147.20.66/api/login");
+      						request.send(formData);
+						return false;
+					}
+					</script>
 					</ul>
 				</form>
 			</div>
 		</div>
     </div>
 	</section></div>
-	
-<script>
-    function post () {
-     
-    }
-  </script>
+
 
 </body></html>
