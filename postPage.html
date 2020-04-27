@@ -1,0 +1,63 @@
+<html>
+
+<body>
+  <form onSubmit="return post();">
+    <h1 style="text-align: center;">Post your creation</h1>
+    <table style="height: 214px; width: 371.5px; background-color: #ccd9cf; margin-left: auto; margin-right: auto;">
+      <tbody>
+        <tr>
+          <td style="text-align: center;">
+            <label for="img">Select image:</label>
+            <input type="file" id="img" name="img" accept="image/*" />
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  
+    <table style="margin-left: auto; margin-right: auto;">
+      <tr>
+        <td><label for="dish_name">Dish name:</label></td>
+        <td><input type="text" id="dish_name" name="dish_name" /></td>
+      </tr>
+      <tr>
+        <td><label for="restaurant">Restaurant name:</label></td>
+        <td><input type="text" id="restaurant" name="restaurant" /></td>
+      </tr>
+      <tr>
+        <td><label for="price">Price:</label></td>
+        <td><input type="text" id="price" name="price" /></td>
+      </tr>
+      <tr>
+        <td><label for="description">Description:</label></td>
+        <td><input type="text" id="description" name="description" /></td>
+      </tr>
+    </table>
+    <p style="text-align: center;"><button type="submit">Post</button> </p>
+  </form>
+
+
+  <script>
+    function post () {
+      var data = {};
+      data.dish_name = document.getElementById("dish_name").value;
+      data.restaurant = document.getElementById("restaurant").value;
+      data.price = document.getElementById("price").value;
+      data.description = document.getElementById("description").value;
+
+      var formData = new FormData();
+      formData.append("data", JSON.stringify(data));
+      formData.append("img", document.getElementById("img").files[0]);
+
+      var request = new XMLHttpRequest();
+      request.open("POST", "http://10.147.20.66/api/post");
+      request.send(formData);
+      location.replace("homepage.html")
+      return false;
+    }
+  </script>
+
+
+</body>
+
+</html>
