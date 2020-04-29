@@ -85,8 +85,8 @@ button:hover {
     <label for="psw"><b>Password</b></label>
     <input type="password" class='password' placeholder="Enter Password" name="psw" id="psw" required>
 
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" class='repeat' placeholder="Repeat Password" name="psw-repeat" required>
+    <label for="psw-repeat"><b>Confirm Password</b></label>
+    <input type="password" class='repeat' placeholder="Confirm Password" name="psw-repeat" id ="psw2" required>
     
     <label>
       <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
@@ -102,6 +102,10 @@ button:hover {
 		location.replace("login.html");
 	}
 	function register() {
+		if(document.getElementById("psw").value != document.getElementById("psw2").value){
+			alert("Please make sure your passwords match.");
+			return false;
+		}
 		var data = {};
 		data.username = document.getElementById("username").value;
       		data.password = document.getElementById("psw").value;
