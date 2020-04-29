@@ -87,7 +87,7 @@
 							var myObj = JSON.parse(request.responseText);
 							console.log(myObj.status);
   							if(myObj.status == true)
-								alert(location);
+								alert(location.pathname);
 								//location.replace("homepage.html");
 							else{
 								alert("Username and password not accepted.");
