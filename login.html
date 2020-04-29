@@ -85,6 +85,7 @@
       						formData.append("data", JSON.stringify(data));
 						console.log("data : " + JSON.stringify(data));
       						var request = new XMLHttpRequest();
+						request.setRequestHeader("Content-Type", "application/json");
 						request.onload = function() {
   							console.log(request.responseText);
 							var myObj = JSON.parse(request.responseText);
