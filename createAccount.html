@@ -110,9 +110,6 @@ button:hover {
 		//data.profile_pic = null;
 		//data.description="testing";
 
-      		var formData = new FormData();
-      		formData.append("data", JSON.stringify(data));
-	
 		console.log("data : " + JSON.stringify(data));
       		var request = new XMLHttpRequest();
 		request.onload = function() {
@@ -125,7 +122,8 @@ button:hover {
 				console.log("response status: " + myObj.status);
 		};
       		request.open("POST", "http://10.147.20.66/api/create_account");
-      		request.send(formData);
+		request.setRequestHeader("Content-Type", "application/json");
+      		request.send(JSON.stringify(data));
 		return false;
 	}
 	</script>
