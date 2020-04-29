@@ -87,11 +87,11 @@
 							var myObj = JSON.parse(request.responseText);
 							console.log(myObj.status);
   							if(myObj.status == true)
-								alert(location.pathname);
-								//location.replace("homepage.html");
+								location.replace("homepage.html");
 							else{
 								alert("Username and password not accepted.");
 							}
+							alert(location.pathname);
 						};
 						
       						request.open("POST", "http://10.147.20.66/api/login");
