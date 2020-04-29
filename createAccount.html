@@ -116,10 +116,10 @@ button:hover {
   			console.log("response : " + request.responseText);
 			var myObj = JSON.parse(request.responseText);
 			
-  			if(myObj.status == false)
+  			if(myObj.status == true)
 				location.replace("/frontend/homepage.html");
 			else
-				console.log("response status: " + myObj.status);
+				alert("Oops! Username has been used! Please try other username. ");
 		};
       		request.open("POST", "http://10.147.20.66/api/create_account");
 		request.setRequestHeader("Content-Type", "application/json");
