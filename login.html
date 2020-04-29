@@ -81,10 +81,9 @@
       						data.username = document.getElementById("username").value;
       						data.password = document.getElementById("password").value;
 						
-      						var formData = new FormData();
-      						formData.append("data", JSON.stringify(data));
 						console.log("data : " + JSON.stringify(data));
-      						var request = new XMLHttpRequest();
+      						
+						var request = new XMLHttpRequest();
 						
 						request.onload = function() {
   							console.log(request.responseText);
@@ -93,12 +92,10 @@
   							if(myObj.status == true)
 								location.replace("homepage.html")
 						};
-
 						
-
       						request.open("POST", "http://10.147.20.66/api/login");
 						request.setRequestHeader("Content-Type", "application/json");
-      						request.send(formData);
+      						request.send(JSON.stringify(data));
 						return false;
 					}
 					</script>
