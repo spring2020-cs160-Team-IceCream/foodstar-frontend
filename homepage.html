@@ -78,6 +78,30 @@ function search() {
 <p align="Center"><button>More Details</button></p>
 </template>
 
+<script>
+var data = {};
+data.category = "Astral";
+
+var request = new XMLHttpRequest();
+request.onload = function() {
+  
+  var myObj = JSON.parse(request.responseText);
+
+  console.log("data : " + JSON.stringify(data));
+  console.log("request.responseText: " + request.responseText);
+myObj.forEach(myFunction);
+function myFunction(item) {
+  console.log("myObj.post_id: " + item.post_id);
+  console.log("myObj.category: " + item.category);
+  console.log("myObj.post_pic: " + item.post_pic);
+}
+};
+
+request.open("POST", "http://10.147.20.66/api/search");
+request.setRequestHeader("Content-Type", "application/json");
+request.send(JSON.stringify(data));
+</script>
+
 
 <script>
 /*
@@ -132,35 +156,7 @@ function displayTest(post)
   node.innerHTML = "Node :" + user + " " + type + " " + pic + " " + description;
   document.body.appendChild(node);
 }
-<!-- access JSON by url -->
- var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-    var myObj = JSON.parse(this.responseText);
-
-  var demo = document.createElement("text"); //the html block
-  demo.innerHTML = "Here :" + myObj[0].user_id + " " + myObj[0].type + " " +  myObj[0].profile_pic + " " + myObj[0].description;
-  document.body.appendChild(demo);
-
-  displayTest(myObj[0]);
-  }
-};
-
-var data = {};
-data.category = "steak";
-
-var request = new XMLHttpRequest();
-request.onload = function() {
-  console.log("response : " + request.responseText);
-  var myObj = JSON.parse(request.responseText);
-
-  console.log("response.status: " + myObj.status);
-  console.log("response: " + myObj);
-};
-
-request.open("POST", "http://10.147.20.66/api/search");
-request.setRequestHeader("Content-Type", "application/json");
-request.send(JSON.stringify(data));
 </script>
+
 
 </html>
