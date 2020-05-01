@@ -81,7 +81,7 @@
 								</li>
 								<script>
 									function createAccount() {
-										location.replace("createAccount.html")
+										location.assign("createAccount.html")
 									}
 
 									function login() {
@@ -98,7 +98,7 @@
 											var myObj = JSON.parse(request.responseText);
 											console.log(myObj.status);
 											if (myObj.status == true)
-												location.replace("http://10.147.20.66/frontend/homepage.html");
+												location.assign("http://10.147.20.66/frontend/homepage.html");
 											else {
 												alert("Username and password not accepted.");
 											}
