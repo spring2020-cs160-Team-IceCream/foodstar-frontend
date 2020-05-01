@@ -70,17 +70,20 @@ function search() {
 
 
 <template>
-<p align="Left"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.foodandwine.com%2Fsites%2Fdefault%2Ffiles%2F1541088184%2Fyemenite-short-ribs-xl-MAG1218.jpg" alt="" width="244" height="244" /></p>
-<p align="Center">Yemenite Short Ribs</p>
-<p align="Center">$24.99</p>
-<p align="Center"><img src="https://cdn3.iconfinder.com/data/icons/basicolor-votting-awards/24/198_star_favorite_vote_achievement-512.png" alt="" width="15" height="15" />&nbsp;4.5</p>
-<p align="Center"><img src="https://previews.123rf.com/images/rehabicons/rehabicons1804/rehabicons180400048/100306579-map-pointer-icon-location-button.jpg" alt="" width="15" height="15" />0.7 miles away</p>
+<p align="Left"><img id ="post_pic" style="display: block; margin-left: auto; margin-right: auto;" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.foodandwine.com%2Fsites%2Fdefault%2Ffiles%2F1541088184%2Fyemenite-short-ribs-xl-MAG1218.jpg" alt="" width="244" height="244" /></p>
+<p align="Center" id ="dish_name">Yemenite Short Ribs</p>
+<p align="Center" id ="price">$24.99</p>
+<p align="Center" id ="avg_self_rating"><img src="https://cdn3.iconfinder.com/data/icons/basicolor-votting-awards/24/198_star_favorite_vote_achievement-512.png" alt="" width="15" height="15" />&nbsp;4.5</p>
+<p align="Center" id ="distance"><img src="https://previews.123rf.com/images/rehabicons/rehabicons1804/rehabicons180400048/100306579-map-pointer-icon-location-button.jpg" alt="" width="15" height="15" />0.7 miles away</p>
 <p align="Center"><button>More Details</button></p>
 </template>
 
 <script>
 var data = {};
 data.category = "Astral";
+
+var temp = document.getElementsByTagName("template")[0];
+
 
 var request = new XMLHttpRequest();
 request.onload = function() {
@@ -89,34 +92,31 @@ request.onload = function() {
 
   console.log("data : " + JSON.stringify(data));
   console.log("request.responseText: " + request.responseText);
-myObj.forEach(myFunction);
-function myFunction(item) {
-  console.log("myObj.post_id: " + item.post_id);
-  console.log("myObj.category: " + item.category);
-  console.log("myObj.post_pic: " + item.post_pic);
+  myObj.forEach(myFunction);
+  function myFunction(item) {
+  var clon = temp.content.cloneNode(true);
+  clon.getElementById("post_pic").src = "http://10.147.20.66" + item.post_pic; 
+  clon.getElementById("dish_name").innerHTML = item.dish_name; 
+  clon.getElementById("price").innerHTML = "$" + item.price; 
+  clon.getElementById("avg_self_rating").innerHTM = item.avg_self_rating; 
+
+  clon.getElementById("distance").innerHTM = item.distance; 
+  document.body.appendChild(clon);
 }
 };
 
 request.open("POST", "http://10.147.20.66/api/search");
 request.setRequestHeader("Content-Type", "application/json");
 request.send(JSON.stringify(data));
-</script>
 
-
-<script>
-/*
-function displayPosts(JSON arr) {
-  arr.forEach(displayIndividual);
-}
 
 function displayIndvidual(){
-  var post = demo.innerHTML.split(" "); //this is an array
 
-  var pic = post[0]; //"https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.foodandwine.com%2Fsites%2Fdefault%2Ffiles%2F1541088184%2Fyemenite-short-ribs-xl-MAG1218.jpg"
-  var foodName = post[1];//"Yemenite Short Ribs"
-  var price = post[2];//"$24.99" !!!!!! --> this has to be carefully detailed in JSON; implementation design
-  var rating = post[3];//"4.5"
-  var distance = post[4];//"0.7 miles away"
+  var pic = item.post_pic; 
+  var foodName = item.dish_name;
+  var price = item.price;
+  var rating = item.avg_self_rating;
+  var distance = item.distance;
 
   //picture
   var picNode = document.createElement("image");
@@ -138,7 +138,13 @@ function displayIndvidual(){
   distanceNode.getAttributeNode("align").value = "Center";
   distanceNode.innerHTML = "<img src=\"https://previews.123rf.com/images/rehabicons/rehabicons1804/rehabicons180400048/100306579-map-pointer-icon-location-button.jpg\" alt=\"\" width=\"15\" height=\"15\" />0.7 miles away" + distance;
 
-}*/
+}
+</script>
+
+
+<script>
+/*
+*/
 
 </script>
 

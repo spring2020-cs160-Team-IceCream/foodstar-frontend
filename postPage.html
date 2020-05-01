@@ -21,6 +21,10 @@
         <td><input type="text" id="dish_name" name="dish_name" /></td>
       </tr>
       <tr>
+        <td><label for="category">Category:</label></td>
+        <td><input type="text" id="category" name="category" /></td>
+      </tr>
+      <tr>
         <td><label for="restaurant">Restaurant name:</label></td>
         <td><input type="text" id="restaurant" name="restaurant" /></td>
       </tr>
@@ -32,6 +36,7 @@
         <td><label for="description">Description:</label></td>
         <td><input type="text" id="description" name="description" /></td>
       </tr>
+      
     </table>
     <p style="text-align: center;"><button type="submit">Post</button> </p>
   </form>
@@ -42,10 +47,13 @@
 	location.replace("homepage.html")
       var data = {};
       data.dish_name = document.getElementById("dish_name").value;
+      data.category = document.getElementById("category").value;
       data.restaurant = document.getElementById("restaurant").value;
       data.price = document.getElementById("price").value;
       data.description = document.getElementById("description").value;
       data.img = document.getElementById("img").files[0];
+      data.user_id_fk = 1;
+      data.rest_id_fk = 1;
 
       var request = new XMLHttpRequest();
       request.onload = function() {
