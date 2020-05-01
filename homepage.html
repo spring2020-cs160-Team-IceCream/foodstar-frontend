@@ -2,7 +2,6 @@
 
 <head>
   <title>Foodstar</title>
-
   <!-- Search bar -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
@@ -51,42 +50,14 @@
   <h1 style="text-align: center;">Food Star</h1>
 
   <!-- Search bar -->
-  <form class="example" style="margin:auto;max-width:300px">
-    <input type="text" id="searchText" placeholder="Search.." name="search2">
-    <button type="button" onclick="search()"><i class="fa fa-search"></i></button>
-    <script>
-      function search() {
-
-          
-        var data = {};
-        data.category = document.getElementById("searchText").value;
-        var temp = document.getElementsByTagName("template")[0];
-        var request = new XMLHttpRequest();
-        request.onload = function () {
-
-          var myObj = JSON.parse(request.responseText);
-          myObj.forEach(post);
-          function post(item) {
-            var clon = temp.content.cloneNode(true);
-            clon.getElementById("post_pic").src = "http://10.147.20.66" + item.post_pic;
-            clon.getElementById("dish_name").innerHTML = item.dish_name;
-            clon.getElementById("price").innerHTML = "$" + item.price;
-            clon.getElementById("avg_self_rating").innerHTM = item.avg_self_rating;
-            clon.getElementById("distance").innerHTM = item.distance;
-            document.body.appendChild(clon);
-          }
-        };
-
-        request.open("POST", "http://10.147.20.66/api/search");
-        request.setRequestHeader("Content-Type", "application/json");
-        request.send(JSON.stringify(data));
-      }
-    </script>
+  <form class="example" style="margin:auto;max-width:300px" onkeydown="return event.key != 'Enter';">
+    <input type="text" id="searchText" placeholder="Search.." />
+    <button type="button" id="searchBtn" onclick="search()"><i class="fa fa-search"></i></button>
   </form>
 
   <!-- Menu and post buttons -->
   <button type="submit" style="float: left;">
-    <img height="60" width="60" src="https://image.flaticon.com/icons/png/512/56/56763.png" onclick="" />
+    <img height="60" width="60" src="https://image.flaticon.com/icons/png/512/56/56763.png" />
   </button>
   <button class="create-post" type="submit" style="float: right;">
     <img height="60" width="60" src="https://cdn3.iconfinder.com/data/icons/glyph/227/Button-Add-1-512.png"
@@ -98,8 +69,9 @@
     }
   </script>
 
-  <!-- Default item and data, no need to change -->
-  <template>
+   <!-- Default item and data, no need to change -->
+   <template>
+     <div class = "post">
     <p align="Left"><img id="post_pic" style="display: block; margin-left: auto; margin-right: auto;"
         src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.foodandwine.com%2Fsites%2Fdefault%2Ffiles%2F1541088184%2Fyemenite-short-ribs-xl-MAG1218.jpg"
         alt="" width="244" height="244" /></p>
@@ -112,34 +84,54 @@
         src="https://previews.123rf.com/images/rehabicons/rehabicons1804/rehabicons180400048/100306579-map-pointer-icon-location-button.jpg"
         alt="" width="15" height="15" />0.7 miles away</p>
     <p align="Center"><button>More Details</button></p>
+    </div>
   </template>
 
   <script>
     var data = {};
     data.category = "Astral";
-    var temp = document.getElementsByTagName("template")[0];
+    load();
 
-    var items = [];
+    function load() {
+      var temp = document.getElementsByTagName("template")[0];
+      var request = new XMLHttpRequest();
+      request.onload = function () {
 
-    var request = new XMLHttpRequest();
-    request.onload = function () {
-      var myObj = JSON.parse(request.responseText);
-      myObj.forEach(post);
-      function post(item) {
-        var clon = temp.content.cloneNode(true);
-        clon.getElementById("post_pic").src = "http://10.147.20.66" + item.post_pic;
-        clon.getElementById("dish_name").innerHTML = item.dish_name;
-        clon.getElementById("price").innerHTML = "$" + item.price;
-        clon.getElementById("avg_self_rating").innerHTM = item.avg_self_rating;
-        clon.getElementById("distance").innerHTM = item.distance;
-        items.push(clon);
-        document.body.appendChild(clon);
-      }
-    };
+        var myObj = JSON.parse(request.responseText);
+        console.log(myObj);
+        myObj.forEach(post);
+        function post(item) {
+          var clon = temp.content.cloneNode(true);
+          clon.getElementById("post_pic").src = "http://10.147.20.66" + item.post_pic;
+          clon.getElementById("dish_name").innerHTML = item.dish_name;
+          clon.getElementById("price").innerHTML = "$" + item.price;
 
-    request.open("POST", "http://10.147.20.66/api/search");
-    request.setRequestHeader("Content-Type", "application/json");
-    request.send(JSON.stringify(data));
+          clon.getElementById("avg_self_rating").textContent = item.avg_self_rating;
+          clon.getElementById("distance").textContent = item.distance;
+          //console.log("innerHTML :"+clon.getElementById("avg_self_rating").innerHTML);
+          document.body.appendChild(clon);
+          
+        }
+      };
+
+      request.open("POST", "http://10.147.20.66/api/search");
+      request.setRequestHeader("Content-Type", "application/json");
+      request.send(JSON.stringify(data));
+    }
+
+    function search() {
+      data.category = document.getElementById("searchText").value;
+      var old = document.getElementsByClassName("post");
+      var count = old.length;
+
+      //remove old items
+      for(var i = 0; i < count; i++)
+        old[0].remove();
+      
+      load();
+    }
+
   </script>
 </body>
+
 </html>
