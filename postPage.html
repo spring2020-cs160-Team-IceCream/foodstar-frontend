@@ -53,6 +53,7 @@
       data.post_pic = document.getElementById("img").files[0];
       data.user_id_fk = 1;
       data.rest_id_fk = 1;
+      console.log("request : " + JSON.stringify(data));
 
       var request = new XMLHttpRequest();
       request.onload = function() {
