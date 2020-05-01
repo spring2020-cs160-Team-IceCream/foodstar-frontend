@@ -11,10 +11,10 @@
             <input type="file" id="img" name="img" accept="image/*" />
           </td>
         </tr>
-        
+
       </tbody>
     </table>
-  
+
     <table style="margin-left: auto; margin-right: auto;">
       <tr>
         <td><label for="dish_name">Dish name:</label></td>
@@ -36,7 +36,6 @@
         <td><label for="description">Description:</label></td>
         <td><input type="text" id="description" name="description" /></td>
       </tr>
-      
     </table>
     <p style="text-align: center;"><button type="submit">Post</button> </p>
   </form>
@@ -50,10 +49,10 @@
       data.restaurant = document.getElementById("restaurant").value;
       data.price = document.getElementById("price").value;
       data.description = document.getElementById("description").value;
-      data.post_pic = document.getElementById("img").files[0];
-      data.user_id_fk = 1;
-      data.rest_id_fk = 1;
-      console.log("request : " + JSON.stringify(data));
+
+      var formData = new FormData();
+      formData.append("data", JSON.stringify(data));
+      formData.append("img", document.getElementById("img").files[0]);
 
       var request = new XMLHttpRequest();
       request.onload = function() {
@@ -65,9 +64,8 @@
 		alert("Post failed!");
       };
       request.open("POST", "http://10.147.20.66/api/post");
-      request.setRequestHeader("Content-Type", "application/json");
-      request.send(JSON.stringify(data));
-      
+      request.send(formData);
+
       return false;
     }
   </script>
