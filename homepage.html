@@ -1,166 +1,145 @@
 <html>
+
 <head>
-<title>Foodstar</title>
+  <title>Foodstar</title>
 
-<!-- Search bar -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body {
-  font-family: Arial;
-}
+  <!-- Search bar -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      font-family: Arial;
+    }
 
-* {
-  box-sizing: border-box;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-form.example input[type=text] {
-  padding: 10px;
-  font-size: 17px;
-  border: 1px solid grey;
-  float: left;
-  width: 80%;
-  background: #f1f1f1;
-}
+    form.example input[type=text] {
+      padding: 10px;
+      font-size: 17px;
+      border: 1px solid grey;
+      float: left;
+      width: 80%;
+      background: #f1f1f1;
+    }
 
-form.example button {
-  float: left;
-  width: 20%;
-  padding: 11px;
-  background: #2196F3;
-  color: white;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none;
-  cursor: pointer;
-}
+    form.example button {
+      float: left;
+      width: 20%;
+      padding: 11px;
+      background: #2196F3;
+      color: white;
+      font-size: 17px;
+      border: 1px solid grey;
+      border-left: none;
+      cursor: pointer;
+    }
 
-form.example button:hover {
-  background: #0b7dda;
-}
+    form.example button:hover {
+      background: #0b7dda;
+    }
 
-form.example::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-</style>
+    form.example::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+  </style>
 </head>
+
 <body>
-<h1 style="text-align: center;">Food Star</h1>
+  <h1 style="text-align: center;">Food Star</h1>
 
-<!-- Search bar -->
-<form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
-  <input type="text" placeholder="Search.." name="search2">
-  <button type="submit"><i class="fa fa-search"></i></button>
-</form>
+  <!-- Search bar -->
+  <form class="example" style="margin:auto;max-width:300px">
+    <input type="text" id="searchText" placeholder="Search.." name="search2">
+    <button type="button" onclick="search()"><i class="fa fa-search"></i></button>
+    <script>
+      function search() {
 
-<!-- Menu and post buttons -->
-<button type = "submit" style="float: left;">
-   <img height="60" width="60" src="https://image.flaticon.com/icons/png/512/56/56763.png" onclick=""/>
-</button>
-<button class="create-post" type = "submit" style="float: right;">
-   <img height="60" width="60" src="https://cdn3.iconfinder.com/data/icons/glyph/227/Button-Add-1-512.png" onclick="search()"/>
-</button>
-<script>
-function search() {
-  location.replace("postPage.html")
-}
-</script>
+          
+        var data = {};
+        data.category = document.getElementById("searchText").value;
+        var temp = document.getElementsByTagName("template")[0];
+        var request = new XMLHttpRequest();
+        request.onload = function () {
 
-<template>
-<p align="Left"><img id ="post_pic" style="display: block; margin-left: auto; margin-right: auto;" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.foodandwine.com%2Fsites%2Fdefault%2Ffiles%2F1541088184%2Fyemenite-short-ribs-xl-MAG1218.jpg" alt="" width="244" height="244" /></p>
-<p align="Center" id ="dish_name">Yemenite Short Ribs</p>
-<p align="Center" id ="price">$24.99</p>
-<p align="Center" id ="avg_self_rating"><img src="https://cdn3.iconfinder.com/data/icons/basicolor-votting-awards/24/198_star_favorite_vote_achievement-512.png" alt="" width="15" height="15" />&nbsp;4.5</p>
-<p align="Center" id ="distance"><img src="https://previews.123rf.com/images/rehabicons/rehabicons1804/rehabicons180400048/100306579-map-pointer-icon-location-button.jpg" alt="" width="15" height="15" />0.7 miles away</p>
-<p align="Center"><button>More Details</button></p>
-</template>
-  
-<script>
-var data = {};
-data.category = "Astral";
+          var myObj = JSON.parse(request.responseText);
+          myObj.forEach(post);
+          function post(item) {
+            var clon = temp.content.cloneNode(true);
+            clon.getElementById("post_pic").src = "http://10.147.20.66" + item.post_pic;
+            clon.getElementById("dish_name").innerHTML = item.dish_name;
+            clon.getElementById("price").innerHTML = "$" + item.price;
+            clon.getElementById("avg_self_rating").innerHTM = item.avg_self_rating;
+            clon.getElementById("distance").innerHTM = item.distance;
+            document.body.appendChild(clon);
+          }
+        };
 
-var temp = document.getElementsByTagName("template")[0];
+        request.open("POST", "http://10.147.20.66/api/search");
+        request.setRequestHeader("Content-Type", "application/json");
+        request.send(JSON.stringify(data));
+      }
+    </script>
+  </form>
 
+  <!-- Menu and post buttons -->
+  <button type="submit" style="float: left;">
+    <img height="60" width="60" src="https://image.flaticon.com/icons/png/512/56/56763.png" onclick="" />
+  </button>
+  <button class="create-post" type="submit" style="float: right;">
+    <img height="60" width="60" src="https://cdn3.iconfinder.com/data/icons/glyph/227/Button-Add-1-512.png"
+      onclick="goPost()" />
+  </button>
+  <script>
+    function goPost() {
+      location.replace("postPage.html")
+    }
+  </script>
 
-var request = new XMLHttpRequest();
-request.onload = function() {
-  
-  var myObj = JSON.parse(request.responseText);
+  <!-- Default item and data, no need to change -->
+  <template>
+    <p align="Left"><img id="post_pic" style="display: block; margin-left: auto; margin-right: auto;"
+        src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-image.foodandwine.com%2Fsites%2Fdefault%2Ffiles%2F1541088184%2Fyemenite-short-ribs-xl-MAG1218.jpg"
+        alt="" width="244" height="244" /></p>
+    <p align="Center" id="dish_name">Yemenite Short Ribs</p>
+    <p align="Center" id="price">$24.99</p>
+    <p align="Center" id="avg_self_rating"><img
+        src="https://cdn3.iconfinder.com/data/icons/basicolor-votting-awards/24/198_star_favorite_vote_achievement-512.png"
+        alt="" width="15" height="15" />&nbsp;4.5</p>
+    <p align="Center" id="distance"><img
+        src="https://previews.123rf.com/images/rehabicons/rehabicons1804/rehabicons180400048/100306579-map-pointer-icon-location-button.jpg"
+        alt="" width="15" height="15" />0.7 miles away</p>
+    <p align="Center"><button>More Details</button></p>
+  </template>
 
-  console.log("data : " + JSON.stringify(data));
-  console.log("request.responseText: " + request.responseText);
-  myObj.forEach(myFunction);
-  function myFunction(item) {
-  var clon = temp.content.cloneNode(true);
-  clon.getElementById("post_pic").src = "http://10.147.20.66" + item.post_pic; 
-  clon.getElementById("dish_name").innerHTML = item.dish_name; 
-  clon.getElementById("price").innerHTML = "$" + item.price; 
-  clon.getElementById("avg_self_rating").innerHTM = item.avg_self_rating; 
+  <script>
+    var data = {};
+    data.category = "Astral";
+    var temp = document.getElementsByTagName("template")[0];
 
-  clon.getElementById("distance").innerHTM = item.distance; 
-  document.body.appendChild(clon);
-}
-};
+    var items = [];
 
-request.open("POST", "http://10.147.20.66/api/search");
-request.setRequestHeader("Content-Type", "application/json");
-request.send(JSON.stringify(data));
+    var request = new XMLHttpRequest();
+    request.onload = function () {
+      var myObj = JSON.parse(request.responseText);
+      myObj.forEach(post);
+      function post(item) {
+        var clon = temp.content.cloneNode(true);
+        clon.getElementById("post_pic").src = "http://10.147.20.66" + item.post_pic;
+        clon.getElementById("dish_name").innerHTML = item.dish_name;
+        clon.getElementById("price").innerHTML = "$" + item.price;
+        clon.getElementById("avg_self_rating").innerHTM = item.avg_self_rating;
+        clon.getElementById("distance").innerHTM = item.distance;
+        items.push(clon);
+        document.body.appendChild(clon);
+      }
+    };
 
-
-function displayIndvidual(){
-
-  var pic = item.post_pic; 
-  var foodName = item.dish_name;
-  var price = item.price;
-  var rating = item.avg_self_rating;
-  var distance = item.distance;
-
-  //picture
-  var picNode = document.createElement("image");
-  picNode.getAttributeNode("style").value = "display: block; margin-left: auto; margin-right: auto;";
-  picNode.getAttributeNode("src").value = pic;
-
-  //name,price
-  var para1 = document.createElement("P");
-  para1.getAttributeNode("align").value = "Center";
-  para.innerHTML = foodName + "<br>" + price + "<br>";
-
-  //rating
-  var ratingNode = document.createElement("image");
-  ratingNode.getAttributeNode("align").value = "Center";
-  ratingNode.innerHTML = "<img src=\"https://cdn3.iconfinder.com/data/icons/basicolor-votting-awards/24/198_star_favorite_vote_achievement-512.png\" alt=\"\" width=\"15\" height=\"15\" />&nbsp;" + rating;
-
-  //distance
-  var distanceNode = document.createElement("image");
-  distanceNode.getAttributeNode("align").value = "Center";
-  distanceNode.innerHTML = "<img src=\"https://previews.123rf.com/images/rehabicons/rehabicons1804/rehabicons180400048/100306579-map-pointer-icon-location-button.jpg\" alt=\"\" width=\"15\" height=\"15\" />0.7 miles away" + distance;
-
-}
-</script>
-
-
-<script>
-/*
-*/
-
-</script>
-
-
- </body>
-<script>
-
-function displayTest(post)
-{
-  var user = post.user_id;
-  var type = post.type;
-  var pic = post.profile_pic
-  var description = post.description;
-  var node = document.createElement("P");
-  node.innerHTML = "Node :" + user + " " + type + " " + pic + " " + description;
-  document.body.appendChild(node);
-}
-</script>
-
-
+    request.open("POST", "http://10.147.20.66/api/search");
+    request.setRequestHeader("Content-Type", "application/json");
+    request.send(JSON.stringify(data));
+  </script>
+</body>
 </html>

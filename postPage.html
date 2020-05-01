@@ -42,7 +42,7 @@
 
 
   <script>
-    function post () {
+    function post() {
       var data = {};
       data.dish_name = document.getElementById("dish_name").value;
       data.category = document.getElementById("category").value;
@@ -50,20 +50,20 @@
       data.price = document.getElementById("price").value;
       data.description = document.getElementById("description").value;
       data.user_id_fk = 1;
-      data.rest_id_fk =1;
+      data.rest_id_fk = 1;
 
       var formData = new FormData();
       formData.append("data", JSON.stringify(data));
       formData.append("img", document.getElementById("img").files[0]);
 
       var request = new XMLHttpRequest();
-      request.onload = function() {
-	console.log("response : " + request.responseText);
-	var myObj = JSON.parse(request.responseText);
-	if(myObj.status == true)
-		location.replace("/frontend/homepage.html");
-	else
-		alert("Post failed!");
+      request.onload = function () {
+        console.log("response : " + request.responseText);
+        var myObj = JSON.parse(request.responseText);
+        if (myObj.status == true)
+          location.replace("/frontend/homepage.html");
+        else
+          alert("Post failed!");
       };
       request.open("POST", "http://10.147.20.66/api/post");
       request.send(formData);
