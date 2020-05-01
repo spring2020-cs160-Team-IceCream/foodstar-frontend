@@ -115,7 +115,7 @@
         <button type="submit" class="signupbtn">Sign Up</button>
         <script>
           function cancel() {
-            location.replace("login.html");
+            location.assign("login.html");
           }
           function register() {
             if (document.getElementById("psw").value != document.getElementById("psw2").value) {
@@ -137,7 +137,7 @@
               var myObj = JSON.parse(request.responseText);
 
               if (myObj.status == true)
-                location.replace("/frontend/homepage.html");
+                location.assign("/frontend/homepage.html");
               else
                 alert("Oops! Username has been used! Please try other username. ");
             };
