@@ -79,6 +79,9 @@ button:hover {
     <p>Please fill in this form to create an account.</p>
     <hr>
 
+    <label for="username"><b>Email</b></label>
+    <input type="email" class='email' placeholder="Enter email" name="email" id ="email" required>
+	  
     <label for="username"><b>Username</b></label>
     <input type="text" class='username' placeholder="Enter Username" name="username" id ="username" required>
 
@@ -109,7 +112,7 @@ button:hover {
 		var data = {};
 		data.username = document.getElementById("username").value;
       		data.password = document.getElementById("psw").value;
-		data.email = "iDontHaveAnEmail@gmail.com";
+		data.email = document.getElementById("email").value;
 		//data.type = "casual";
 		//data.profile_pic = null;
 		//data.description="testing";
