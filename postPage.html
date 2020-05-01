@@ -61,7 +61,7 @@
         console.log("response : " + request.responseText);
         var myObj = JSON.parse(request.responseText);
         if (myObj.status == true)
-          location.replace("/frontend/homepage.html");
+          location.assign("/frontend/homepage.html");
         else
           alert("Post failed!");
       };
