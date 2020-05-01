@@ -49,6 +49,8 @@
       data.restaurant = document.getElementById("restaurant").value;
       data.price = document.getElementById("price").value;
       data.description = document.getElementById("description").value;
+      data.user_id_fk = 1;
+      data.rest_id_fk =1;
 
       var formData = new FormData();
       formData.append("data", JSON.stringify(data));
