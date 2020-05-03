@@ -51,7 +51,7 @@
       formData.append("img", document.getElementById("img").files[0]);
 
       var request = new XMLHttpRequest();
-      request.open("POST", "http://10.147.20.66/api/post");
+      request.open("POST", "/api/post");
       request.send(formData);
       
       return false;
