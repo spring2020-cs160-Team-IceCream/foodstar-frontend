@@ -1,69 +1,76 @@
-<html><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>FoodStar Login</title>
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-    <!--[if lt IE 9]>
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+	<!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
 
-    <!--headerIncludes-->
+	<!--headerIncludes-->
 
 	<!-- css files -->
-	<link rel="stylesheet" href="./bundles/css/style.css" type="text/css" media="all"> <!-- Style-CSS --> 
+	<link rel="stylesheet" href="./bundles/css/style.css" type="text/css" media="all"> <!-- Style-CSS -->
 	<link href="./bundles/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
 	<!-- //css files -->
-	
+
 	<!-- google fonts -->
 	<link href="//fonts.googleapis.com/css?family=Mukta:200,300,400,500,600,700,800" rel="stylesheet">
 	<!-- //google fonts -->
-	
+
 </head>
+
 <body>
 	<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
 	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-                <!--<label for="email1">Email address</label>
+	<!--<label for="email1">Email address</label>
                 <input type="email" class="form-control action-email" id="email1" placeholder="Email">-->
-    <div id="page" class="page">
+	<div id="page" class="page">
 
-    <section class="main bg bg1" style="background-color: rgba(0, 0, 0, 0); margin-top: 0px; background-image: url(&quot;bundles/food_background.png&quot;); outline: none; cursor: inherit;">
-		<div class="layer">
-		<div class="content-main">
-			<div class="title">
-				<h1>FoodStar</h1>
-			</div>
-			<div class="content-bottom">
-				<form class="login" onSubmit="return login()">
-					<div class="field-group editContent">
-						<div class="icon-field">
-							<span class="fa fa-envelope" aria-hidden="true" id="ui-id-2"></span>
-						</div>
-						<div class="input-field">
-							<input name="username" id="username" class="username" type="text" placeholder="Email" required=""/>
-						</div>
+		<section class="main bg bg1"
+			style="background-color: rgba(0, 0, 0, 0); margin-top: 0px; background-image: url(&quot;bundles/food_background.png&quot;); outline: none; cursor: inherit;">
+			<div class="layer">
+				<div class="content-main">
+					<div class="title">
+						<h1>FoodStar</h1>
 					</div>
-					<div class="field-group editContent">
-						<div class="icon-field">
-							<span class="fa fa-lock" aria-hidden="true"></span>
-						</div>
-						<div class="input-field">
-							<input name="password" id="password" class ='password' type="Password" placeholder="Password" required=""/>
-						</div>
-					</div>
-					<ul class="list-login">
-						<li>
-						</li>
-						<li>
-							<a href="#" class="text-right editContent">Forgot Password?</a>
-						</li>
-						<li class="clearfix"></li>
-					</ul>
-					<div class="input-field">
-					<button type="submit" class="btn">Login</button>
-					</div>
+					<div class="content-bottom">
+						<form class="login" onSubmit="return login()">
+							<div class="field-group editContent">
+								<div class="icon-field">
+									<span class="fa fa-envelope" aria-hidden="true" id="ui-id-2"></span>
+								</div>
+								<div class="input-field">
+									<input name="username" id="username" class="username" type="text"
+										placeholder="Email" required="" />
+								</div>
+							</div>
+							<div class="field-group editContent">
+								<div class="icon-field">
+									<span class="fa fa-lock" aria-hidden="true"></span>
+								</div>
+								<div class="input-field">
+									<input name="password" id="password" class='password' type="Password"
+										placeholder="Password" required="" />
+								</div>
+							</div>
+							<ul class="list-login">
+								<li>
+								</li>
+								<li>
+									<a href="#" class="text-right editContent">Forgot Password?</a>
+								</li>
+								<li class="clearfix"></li>
+							</ul>
+							<div class="input-field">
+								<button type="submit" class="btn">Login</button>
+							</div>
 
+<<<<<<< HEAD
 					<ul class="list-login-bottom">
 						<li class="">
 							<a href="#" class="editContent medium-editor-element" contenteditable="true" spellcheck="true" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="13" medium-editor-index="97f948df-618b-1849-eff2-a7c015fad069" data-placeholder="Type your text" onclick="createAccount()" style="width:auto;" >Create Account</a>
@@ -102,10 +109,58 @@
 					</script>
 					</ul>
 				</form>
+=======
+							<ul class="list-login-bottom">
+								<li class="">
+									<a href="#" class="editContent medium-editor-element" contenteditable="true"
+										spellcheck="true" data-medium-editor-element="true" role="textbox"
+										aria-multiline="true" data-medium-editor-editor-index="13"
+										medium-editor-index="97f948df-618b-1849-eff2-a7c015fad069"
+										data-placeholder="Type your text" onclick="createAccount()"
+										style="width:auto;">Create Account</a>
+								</li>
+								<script>
+									function createAccount() {
+										location.assign("createAccount.html")
+									}
+
+									function login() {
+										var data = {};
+										data.username = document.getElementById("username").value;
+										data.password = document.getElementById("password").value;
+
+										console.log("data : " + JSON.stringify(data));
+
+										var request = new XMLHttpRequest();
+
+										request.onload = function () {
+											console.log(request.responseText);
+											var myObj = JSON.parse(request.responseText);
+											console.log(myObj.status);
+											if (myObj.status == true)
+												location.assign("http://10.147.20.66/frontend/homepage.html");
+											else {
+												alert("Username and password not accepted.");
+											}
+											alert(location.pathname);
+										};
+
+										request.open("POST", "http://10.147.20.66/api/login");
+										request.setRequestHeader("Content-Type", "application/json");
+										request.send(JSON.stringify(data));
+										return false;
+									}
+								</script>
+							</ul>
+						</form>
+					</div>
+				</div>
+>>>>>>> 54923ae978693fab0c413769e0b5ba99be7ce3a1
 			</div>
-		</div>
-    </div>
-	</section></div>
+		</section>
+	</div>
 
 
-</body></html>
+</body>
+
+</html>

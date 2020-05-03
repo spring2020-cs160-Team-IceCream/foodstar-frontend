@@ -11,14 +11,18 @@
             <input type="file" id="img" name="img" accept="image/*" />
           </td>
         </tr>
-        
+
       </tbody>
     </table>
-  
+
     <table style="margin-left: auto; margin-right: auto;">
       <tr>
         <td><label for="dish_name">Dish name:</label></td>
         <td><input type="text" id="dish_name" name="dish_name" /></td>
+      </tr>
+      <tr>
+        <td><label for="category">Category:</label></td>
+        <td><input type="text" id="category" name="category" /></td>
       </tr>
       <tr>
         <td><label for="restaurant">Restaurant name:</label></td>
@@ -38,22 +42,36 @@
 
 
   <script>
-    function post () {
-	location.replace("homepage.html")
+    function post() {
       var data = {};
       data.dish_name = document.getElementById("dish_name").value;
+      data.category = document.getElementById("category").value;
       data.restaurant = document.getElementById("restaurant").value;
       data.price = document.getElementById("price").value;
       data.description = document.getElementById("description").value;
+      data.user_id_fk = 1;
+      data.rest_id_fk = 1;
 
       var formData = new FormData();
       formData.append("data", JSON.stringify(data));
       formData.append("img", document.getElementById("img").files[0]);
 
       var request = new XMLHttpRequest();
+<<<<<<< HEAD
       request.open("POST", "/api/post");
+=======
+      request.onload = function () {
+        console.log("response : " + request.responseText);
+        var myObj = JSON.parse(request.responseText);
+        if (myObj.status == true)
+          location.assign("/frontend/homepage.html");
+        else
+          alert("Post failed!");
+      };
+      request.open("POST", "http://10.147.20.66/api/post");
+>>>>>>> 54923ae978693fab0c413769e0b5ba99be7ce3a1
       request.send(formData);
-      
+
       return false;
     }
   </script>

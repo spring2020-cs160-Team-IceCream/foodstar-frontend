@@ -1,14 +1,14 @@
 describe('Login to Homepage', () => {
 	it('Navigate to login page', () => {
-    	cy.visit('http://10.147.20.66/frontend/login.html#')
+    	cy.visit('http://10.147.20.66/frontend/login.html')
     	cy.contains('FoodStar')
   		cy.contains('Login')
   	})
-/*
+
   it('Trying to submit w/o info', () => {
       cy.get('.login').submit()
       cy.url().should('not.equal','http://10.147.20.66/frontend/homepage.html')
-    })*/
+    })
 
 	it('Typing in info', () => {
   		cy.get('.username')
