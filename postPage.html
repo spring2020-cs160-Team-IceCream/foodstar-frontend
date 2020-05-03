@@ -57,9 +57,6 @@
       formData.append("img", document.getElementById("img").files[0]);
 
       var request = new XMLHttpRequest();
-<<<<<<< HEAD
-      request.open("POST", "/api/post");
-=======
       request.onload = function () {
         console.log("response : " + request.responseText);
         var myObj = JSON.parse(request.responseText);
@@ -69,7 +66,6 @@
           alert("Post failed!");
       };
       request.open("POST", "http://10.147.20.66/api/post");
->>>>>>> 54923ae978693fab0c413769e0b5ba99be7ce3a1
       request.send(formData);
 
       return false;

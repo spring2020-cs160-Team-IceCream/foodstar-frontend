@@ -70,46 +70,6 @@
 								<button type="submit" class="btn">Login</button>
 							</div>
 
-<<<<<<< HEAD
-					<ul class="list-login-bottom">
-						<li class="">
-							<a href="#" class="editContent medium-editor-element" contenteditable="true" spellcheck="true" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="13" medium-editor-index="97f948df-618b-1849-eff2-a7c015fad069" data-placeholder="Type your text" onclick="createAccount()" style="width:auto;" >Create Account</a>
-						</li>
-					<script>
-					function createAccount() {
- 						location.replace("createAccount.html")
-					}
-
-					function login() {
-
-						//location.replace("homepage.html")
-
- 						var data = {};
-      						data.username = document.getElementById("username").value;
-      						data.password = document.getElementById("password").value;
-						
-      						var formData = new FormData();
-      						formData.append("data", JSON.stringify(data));
-						console.log("data : " + JSON.stringify(data));
-      						var request = new XMLHttpRequest();
-						request.onload = function() {
-  							console.log(request.responseText);
-							var myObj = JSON.parse(request.responseText);
-							console.log(myObj.status);
-  							if(myObj.status == true)
-								location.replace("homepage.html")
-						};
-
-						
-
-      						request.open("POST", "/api/login");
-      						request.send(formData);
-						return false;
-					}
-					</script>
-					</ul>
-				</form>
-=======
 							<ul class="list-login-bottom">
 								<li class="">
 									<a href="#" class="editContent medium-editor-element" contenteditable="true"
@@ -155,7 +115,6 @@
 						</form>
 					</div>
 				</div>
->>>>>>> 54923ae978693fab0c413769e0b5ba99be7ce3a1
 			</div>
 		</section>
 	</div>
