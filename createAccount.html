@@ -141,7 +141,7 @@
               else
                 alert("Oops! Username has been used! Please try other username. ");
             };
-            request.open("POST", "http://10.147.20.66/api/create_account");
+            request.open("POST", "/api/create_account");
             request.setRequestHeader("Content-Type", "application/json");
             request.send(JSON.stringify(data));
             return false;

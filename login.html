@@ -98,14 +98,14 @@
 											var myObj = JSON.parse(request.responseText);
 											console.log(myObj.status);
 											if (myObj.status == true)
-												location.assign("http://10.147.20.66/frontend/homepage.html");
+												location.assign("/frontend/homepage.html");
 											else {
 												alert("Username and password not accepted.");
 											}
 											alert(location.pathname);
 										};
 
-										request.open("POST", "http://10.147.20.66/api/login");
+										request.open("POST", "/api/login");
 										request.setRequestHeader("Content-Type", "application/json");
 										request.send(JSON.stringify(data));
 										return false;

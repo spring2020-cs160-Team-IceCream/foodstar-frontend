@@ -102,7 +102,7 @@
         myObj.forEach(post);
         function post(item) {
           var clon = temp.content.cloneNode(true);
-          clon.getElementById("post_pic").src = "http://10.147.20.66" + item.post_pic;
+          clon.getElementById("post_pic").src = item.post_pic;
           clon.getElementById("dish_name").innerHTML = item.dish_name;
           clon.getElementById("price").innerHTML = "$" + item.price;
 
@@ -114,7 +114,7 @@
         }
       };
 
-      request.open("POST", "http://10.147.20.66/api/search");
+      request.open("POST", "/api/search");
       request.setRequestHeader("Content-Type", "application/json");
       request.send(JSON.stringify(data));
     }
