@@ -1,0 +1,16 @@
+This is the user guide to Foodstar. This is meant to purely explain the functionality of Foodstar and its UI.
+
+The prerequisites for this user guide are either that Foodstar’s original development team has set up the website on a commercial server or that you have replicated the environment of the server in our setup.
+  
+Navigation to the application
+First of all, you have to connect to the login page. This will be the IP address of either our commercial server or your private server. From there, you need to add 
+“/Foodstar/login.html” to the end of the URL. Now that you have navigated successfully to the Login page, you can now create an account by clicking on the Create Account button. The page will navigate to the account creation page. 
+
+Account creation
+Here, you just need to fill out the relevant information. If there are any problems or issues with the information you filled out, then there will be a notification popup. Once you have filled in the relevant information, click on the submit button. You should now have an account and be able to log in.
+
+Homepage
+Now that you have an account, you can login successfully. Once you have done so, you will see the homepage. From here, you can search for a category and it will bring up the search results in the database.
+
+Post creation
+If you want to create a post, you can click on the + button on the right hand side. The browser will navigate to the post creation page. From here, you need to fill in the input fields. If you do not have a picture of the food item, you can leave it blank and a default picture will be generated for the item. You can now navigate back to the homepage and look for your post via the search function.
